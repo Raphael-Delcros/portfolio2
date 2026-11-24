@@ -1,11 +1,300 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image } from 'astro:assets';
+import profil from '../images/profil.jpg';
+import cdplayer from '../images/projects/cdPlayer.png';
+import passatemps from '../images/projects/passatemps.png';
+import spaceInvaders from '../images/projects/spaceInvaders.png';
+import github from '../images/socialMedias/github.svg';
+import linkedIn from '../images/socialMedias/linkedIn.svg';
+import frenchFlag from '../images/drapeau_FR.svg';
+import englishFlag from '../images/drapeau_UK.svg';
+import cvFr from '../images/raphael_delcros_CV_FR.pdf?url';
+import cvEn from '../images/raphael_delcros_CV_EN.pdf?url';
 ---
 
 <Layout>
-	<Welcome />
+	<header class="nav-shell">
+		<nav class="nav" aria-label="Navigation principale">
+			<p class="brand">RD<span>.</span></p>
+			<button class="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+				<span></span><span></span>
+			</button>
+			<div class="nav-links">
+				<a href="#about" data-i18n="nav.about">À propos</a>
+				<a href="#projects" data-i18n="nav.projects">Projets</a>
+				<a href="#skills" data-i18n="nav.skills">Compétences</a>
+				<a href="#experiences" data-i18n="nav.experiences">Expériences</a>
+			</div>
+			<button class="language" type="button" aria-label="Passer au portfolio anglais">
+				<span class="language-code">EN</span>
+			</button>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" id="about">
+			<div class="hero-copy">
+				<p class="eyebrow"><span></span> <span data-i18n="hero.role">Étudiant développeur</span></p>
+				<h1>Raphaël<br /><strong>Delcros</strong></h1>
+				<p class="intro" data-i18n="hero.intro">
+					Étudiant passionné par l'informatique depuis mon enfance, je conçois des applications
+					et des expériences numériques avec curiosité et précision.
+				</p>
+				<div class="hero-actions">
+					<a
+						class="button button-primary cv-link"
+						href={cvFr}
+						data-cv-fr={cvFr}
+						data-cv-en={cvEn}
+						target="_blank"
+					>
+						<span data-i18n="hero.cv">Voir mon CV</span>
+						<span aria-hidden="true">↗</span>
+					</a>
+					<a class="social-link" href="https://github.com/Raphael-Delcros" target="_blank" rel="noreferrer">
+						<Image src={github} alt="" width={20} height={20} />
+						GitHub
+					</a>
+					<a class="social-link" href="https://www.linkedin.com/in/raphael-delcros/" target="_blank" rel="noreferrer">
+						<Image src={linkedIn} alt="" width={20} height={20} />
+						LinkedIn
+					</a>
+				</div>
+			</div>
+			<div class="hero-visual">
+				<div class="portrait-frame">
+					<Image src={profil} alt={"Raphaël Delcros"} />
+				</div>
+				<div class="status-card">
+					<span class="status-dot"></span>
+					<div><small data-i18n="hero.now">Actuellement</small><strong data-i18n="hero.status">Étudiant à l'IUT</strong></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="projects">
+			<div class="section-heading">
+				<h2 data-i18n="projects.title">Projets</h2>
+			</div>
+			<div class="project-grid">
+				<article class="project-card project-card-featured">
+					<div class="project-image">
+						<Image src={passatemps} alt={"Page d'accueil de passatemps"} />
+					</div>
+					<div class="project-content">
+						<div class="project-meta"><span data-i18n="projects.passatemps.type">Produit web</span><span>2024–2026</span></div>
+						<h3>Passatemps</h3>
+						<p data-i18n="projects.passatemps.description">Application complète de vente d'occasion de jeux de société. Conception, gestion produit et développement MVC avec PHP/Twig.</p>
+						<div class="tags"><span>PHP</span><span>MVC</span><span>MySQL</span><span>UML</span></div>
+					</div>
+				</article>
+				<article class="project-card">
+					<div class="project-image">
+						<Image src={cdplayer} alt={"Interface du projet Lecteur CD"} />
+					</div>
+					<div class="project-content">
+						<div class="project-meta"><span data-i18n="projects.cd.type">Application desktop</span></div>
+						<h3>Lecteur CD</h3>
+						<p data-i18n="projects.cd.description">Reproduction interactive d'un lecteur CD sous Qt, avec contrôles physiques adaptés à l'interface.</p>
+						<div class="tags"><span>C++</span><span>Qt</span><span>MVP</span></div>
+					</div>
+				</article>
+				<article class="project-card">
+					<div class="project-image">
+						<Image src={spaceInvaders} alt={"Interface du projet Chemins de Bayonne"} />
+					</div>
+					<div class="project-content">
+						<div class="project-meta"><span data-i18n="projects.paths.type">Algorithmique</span></div>
+						<h3 data-i18n="projects.paths.title">Chemins de Bayonne</h3>
+						<p data-i18n="projects.paths.description">Calcul de trajets optimaux sur une carte de Bayonne avec plusieurs algorithmes de graphes.</p>
+						<div class="tags"><span>Python</span><span>Dijkstra</span><span>A*</span></div>
+					</div>
+				</article>
+			</div>
+		</section>
+		<!-- Compétences -->
+		<section class="section" id="skills">
+			<div class="section-heading">
+				<p class="eyebrow" data-i18n="skills.eyebrow">Boîte à outils</p>
+				<h2 data-i18n="skills.title">Compétences</h2>
+			</div>
+			<div class="skills-grid">
+				<article class="skill-panel">
+					<h3><span>01</span> <span data-i18n="skills.tech">Techniques</span></h3>
+					<div class="skill-list">
+						<span>C++</span><span>Python</span><span>SQL</span><span>Git</span><span>Angular</span>
+						<span>HTML / CSS / JS</span><span>PL/SQL</span><span>Figma</span><span>PHP</span><span>Laravel</span><span>AI</span>
+					</div>
+				</article>
+				<article class="skill-panel">
+					<h3><span>02</span> <span data-i18n="skills.soft">Humaines</span></h3>
+					<div class="skill-list">
+						<span data-i18n="skills.reactivity">Réactivité</span>
+						<span data-i18n="skills.adaptability">Adaptabilité</span>
+						<span data-i18n="skills.punctuality">Ponctualité</span>
+					</div>
+				</article>
+				<article class="skill-panel">
+					<h3><span>03</span> <span data-i18n="skills.languages">Langues</span></h3>
+					<div class="skill-list">
+						<span data-i18n="skills.french">Français natif</span>
+						<span data-i18n="skills.english">Anglais courant</span>
+					</div>
+				</article>
+			</div>
+		</section>
+		<!-- Experiences -->
+		<section class="section" id="experiences">
+			<div class="section-heading">
+				<p class="eyebrow" data-i18n="experience.eyebrow">Mon parcours</p>
+				<h2 data-i18n="experience.title">Expériences</h2>
+			</div>
+			<div class="timeline">
+				<article class="timeline-item">
+					<div class="timeline-marker"><span></span></div>
+					<div class="timeline-date">2026 — <span data-i18n="dates.now">Maintenant</span></div>
+					<div class="timeline-card">
+						<p class="timeline-kind" data-i18n="experience.apprenticeship">Alternance</p>
+						<h3>IS DECISIONS</h3>
+						<p data-i18n="experience.isDecisions.description">Je suis actuellement alternant avec IS DECISIONS et l'IUT de Bayonne, où je programme des webhooks pour l'entreprise. Ces derniers collectent ce que le logiciel UserLock d'IS DECISIONS envoie et les transforment au format syslog ou OCSF (en JSON) pour les envoyer à des SIEMs.</p>
+						<div class="tags"><span>Webhooks</span><span>UserLock</span><span>Syslog</span><span>OCSF / JSON</span></div>
+					</div>
+				</article>
+				<article class="timeline-item">
+					<div class="timeline-marker"><span></span></div>
+					<div class="timeline-date">2024 — <span data-i18n="dates.now">Maintenant</span></div>
+					<div class="timeline-card">
+						<p class="timeline-kind" data-i18n="experience.education">Formation</p>
+						<h3>IUT de Bayonne et du Pays Basque</h3>
+						<p data-i18n="experience.iut.description">Étudiant en 3ème année en informatique. Réalisation de projets complets : application web Passatemps, Laravel, Angular et nombreux langages.</p>
+						<div class="tags"><span>BUT Informatique</span><span>Développement</span></div>
+					</div>
+				</article>
+				<article class="timeline-item">
+					<div class="timeline-marker"><span></span></div>
+					<div class="timeline-date">2026</div>
+					<div class="timeline-card">
+						<p class="timeline-kind" data-i18n="experience.internship">Stage</p>
+						<h3>Pixalione</h3>
+						<p data-i18n="experience.pixalione.description">J'ai passé 8 semaines chez Pixalione en tant que stagiaire afin d'étendre et confirmer mes expériences en développement. Pendant ce stage, j'ai écrit un dashboard en Angular pour ma tutrice de stage regroupant les données des clients de l'entreprise et en faisant des statistiques.</p>
+						<div class="tags"><span>Angular</span><span data-i18n="tags.dashboard">Dashboard</span><span data-i18n="tags.statistics">Statistiques</span></div>
+					</div>
+				</article>
+				<article class="timeline-item">
+					<div class="timeline-marker"><span></span></div>
+					<div class="timeline-date">2021</div>
+					<div class="timeline-card">
+						<p class="timeline-kind" data-i18n="experience.project">Projet professionnel</p>
+						<h3>Regard Félin la boutique</h3>
+						<p data-i18n="experience.regard.description">Découverte de la création et gestion d'un site e-commerce en no-code, ainsi que de l'optimisation de contenu multimédia.</p>
+						<div class="tags"><span>E-commerce</span><span>No-code</span><span>Multimédia</span></div>
+					</div>
+				</article>
+				<article class="timeline-item">
+					<div class="timeline-marker"><span></span></div>
+					<div class="timeline-date">2020</div>
+					<div class="timeline-card">
+						<p class="timeline-kind" data-i18n="experience.internship">Stage</p>
+						<h3>SELLSY</h3>
+						<p data-i18n="experience.sellsy.description">Découverte du développement d'une application CRM, de l'expérience utilisateur et du support client au sein d'une startup.</p>
+						<div class="tags"><span>CRM</span><span>UI / UX</span><span>Support</span></div>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section class="nuit">
+			<div>
+				<p class="eyebrow" data-i18n="nuit.eyebrow">Challenge étudiant</p>
+				<h2>La Nuit de l'Info</h2>
+			</div>
+			<p data-i18n="nuit.description">Participation en 2024 et 2025 à cette compétition collective où les équipes créent un site web sur un thème imposé, en une nuit.</p>
+		</section>
+	</main>
+
+	<footer>
+		<div>
+			<p class="footer-name">Raphaël Delcros</p>
+			<p data-i18n="footer.role">Étudiant & développeur</p>
+		</div>
+		<div class="footer-contact">
+			<a href="mailto:delcros.raphael1@gmail.com">delcros.raphael1@gmail.com</a>
+			<a href="tel:+33650389606">+33 6 50 38 96 06</a>
+		</div>
+	</footer>
+
+	<script is:inline>
+		const translations = {
+			fr: {
+				"nav.about": "À propos", "nav.projects": "Projets", "nav.skills": "Compétences", "nav.experiences": "Expériences",
+				"hero.role": "Étudiant développeur",
+				"hero.intro": "Étudiant passionné par l'informatique depuis mon enfance, je conçois des applications et des expériences numériques avec curiosité et précision.",
+				"hero.cv": "Voir mon CV", "hero.now": "Actuellement", "hero.status": "Étudiant à l'IUT",
+				"projects.title": "Projets",
+				"projects.passatemps.type": "Produit web", "projects.passatemps.description": "Application complète de vente d'occasion de jeux de société. Conception, gestion produit et développement MVC avec PHP/Twig.",
+				"projects.cd.type": "Application desktop", "projects.cd.description": "Reproduction interactive d'un lecteur CD sous Qt, avec contrôles physiques adaptés à l'interface.",
+				"projects.paths.type": "Algorithmique", "projects.paths.title": "Chemins de Bayonne", "projects.paths.description": "Calcul de trajets optimaux sur une carte de Bayonne avec plusieurs algorithmes de graphes.",
+				"skills.eyebrow": "Boîte à outils", "skills.title": "Compétences", "skills.tech": "Techniques", "skills.soft": "Humaines", "skills.languages": "Langues",
+				"skills.reactivity": "Réactivité", "skills.adaptability": "Adaptabilité", "skills.punctuality": "Ponctualité", "skills.french": "Français natif", "skills.english": "Anglais courant",
+				"experience.eyebrow": "Mon parcours", "experience.title": "Expériences", "experience.apprenticeship": "Alternance", "experience.internship": "Stage", "experience.education": "Formation", "experience.project": "Projet professionnel",
+				"dates.now": "Maintenant",
+				"experience.isDecisions.description": "Je suis actuellement alternant avec IS DECISIONS et l'IUT de Bayonne, où je programme des webhooks pour l'entreprise. Ces derniers collectent ce que le logiciel UserLock d'IS DECISIONS envoie et les transforment au format syslog ou OCSF (en JSON) pour les envoyer à des SIEMs.",
+				"experience.pixalione.description": "J'ai passé 8 semaines chez Pixalione en tant que stagiaire afin d'étendre et confirmer mes expériences en développement. Pendant ce stage, j'ai écrit un dashboard en Angular pour ma tutrice de stage regroupant les données des clients de l'entreprise et en faisant des statistiques.",
+				"experience.iut.description": "Étudiant en 3ème année en informatique. Réalisation de projets complets : application web Passatemps, Laravel, Angular et nombreux langages.",
+				"experience.regard.description": "Découverte de la création et gestion d'un site e-commerce en no-code, ainsi que de l'optimisation de contenu multimédia.",
+				"experience.sellsy.description": "Découverte du développement d'une application CRM, de l'expérience utilisateur et du support client au sein d'une startup.",
+				"tags.dashboard": "Dashboard", "tags.statistics": "Statistiques",
+				"nuit.eyebrow": "Challenge étudiant", "nuit.description": "Participation en 2024 et 2025 à cette compétition collective où les équipes créent un site web sur un thème imposé, en une nuit.",
+				"footer.role": "Étudiant & développeur"
+			},
+			en: {
+				"nav.about": "About", "nav.projects": "Projects", "nav.skills": "Skills", "nav.experiences": "Experience",
+				"hero.role": "Computer science student",
+				"hero.intro": "Passionate about computer science since childhood, I design applications and digital experiences with curiosity and precision.",
+				"hero.cv": "View my CV", "hero.now": "Currently", "hero.status": "Student at IUT",
+				"projects.title": "Projects",
+				"projects.passatemps.type": "Web product", "projects.passatemps.description": "A complete marketplace for second-hand board games. Product design and MVC development with PHP/Twig.",
+				"projects.cd.type": "Desktop application", "projects.cd.description": "An interactive recreation of a physical CD player built with Qt, adapting physical controls to the interface.",
+				"projects.paths.type": "Algorithms", "projects.paths.title": "Bayonne routes", "projects.paths.description": "Optimal route calculation across a map of Bayonne using several graph algorithms.",
+				"skills.eyebrow": "Toolkit", "skills.title": "Skills", "skills.tech": "Technical", "skills.soft": "Soft skills", "skills.languages": "Languages",
+				"skills.reactivity": "Responsiveness", "skills.adaptability": "Adaptability", "skills.punctuality": "Punctuality", "skills.french": "Native French", "skills.english": "Fluent English",
+				"experience.eyebrow": "My journey", "experience.title": "Experience", "experience.apprenticeship": "Work-study", "experience.internship": "Internship", "experience.education": "Education", "experience.project": "Professional project",
+				"dates.now": "Present",
+				"experience.isDecisions.description": "I am currently completing a work-study program with IS DECISIONS and IUT de Bayonne, where I develop webhooks for the company. These webhooks collect events sent by IS DECISIONS' UserLock software and convert them to syslog or OCSF JSON format before forwarding them to SIEM platforms.",
+				"experience.pixalione.description": "I spent eight weeks at Pixalione as an intern to broaden and strengthen my development experience. I built an Angular dashboard for my supervisor that brought together company customer data and provided statistics.",
+				"experience.iut.description": "Third-year computer science student at IUT de Bayonne. I have completed full projects including the Passatemps web application, as well as work with Laravel, Angular, and multiple programming languages.",
+				"experience.regard.description": "Discovered how to create and manage a no-code e-commerce website, and optimize multimedia content for product presentation.",
+				"experience.sellsy.description": "Discovered CRM application development, user experience, and customer support while working at a startup.",
+				"tags.dashboard": "Dashboard", "tags.statistics": "Statistics",
+				"nuit.eyebrow": "Student challenge", "nuit.description": "Participated in 2024 and 2025 in a team challenge to build a website around a given theme in a single night.",
+				"footer.role": "Student & developer"
+			}
+		};
+
+		const languageButton = document.querySelector('.language');
+		const languageCode = document.querySelector('.language-code');
+		const cvLink = document.querySelector('.cv-link');
+
+		function setLanguage(language) {
+			document.documentElement.lang = language;
+			document.querySelectorAll('[data-i18n]').forEach((element) => {
+				const text = translations[language][element.dataset.i18n];
+				if (text) element.textContent = text;
+			});
+
+			const isEnglish = language === 'en';
+			languageCode.textContent = isEnglish ? 'FR' : 'EN';
+			languageButton.setAttribute('aria-label', isEnglish ? 'Passer au portfolio français' : 'Passer au portfolio anglais');
+			cvLink.href = isEnglish ? cvLink.dataset.cvEn : cvLink.dataset.cvFr;
+			document.title = isEnglish ? 'Raphaël Delcros - Portfolio' : 'Raphaël Delcros - Portfolio';
+			localStorage.setItem('portfolio-language', language);
+		}
+
+		languageButton.addEventListener('click', () => {
+			setLanguage(document.documentElement.lang === 'fr' ? 'en' : 'fr');
+		});
+
+		setLanguage(localStorage.getItem('portfolio-language') || 'fr');
+	</script>
 </Layout>
